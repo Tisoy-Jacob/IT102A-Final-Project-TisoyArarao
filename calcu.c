@@ -4,7 +4,8 @@ int main() {
     int operation;
     char confirm;
     int rows, i, j;
-    float grade;
+    float prelim, midterm, semifinals, finals;
+    float finalGrade;
     char str[100];
     int length = 0;
     int k;
@@ -120,7 +121,7 @@ int main() {
             int num = 1;
 
            for (j = 0; j < rows - i - 1; j++) {
-        printf("  ");
+            printf("  ");
         }
              for (j = 0; j <= i; j++) {
              printf("%4d", num);
@@ -147,48 +148,64 @@ int main() {
 
         if (confirm == '1') {
         
-            printf("Enter your grade (1.00 - 5.00): ");
-            scanf("%f", &grade);
-            if (grade < 1.00 || grade > 5.00) {
+    
+        
+            printf("Enter your Prelim Grade: ");
+            scanf("%f", &prelim);
 
-                printf("Invalid grade. Please enter a grade between 1.00 and 5.00.\n");
+            printf("Enter your Midterm Grade: ");
+            scanf("%f", &midterm);
+
+            printf("Enter your Semi-finals Grade: ");
+            scanf("%f", &semifinals);
+
+            printf("Enter your Finals Grade: ");
+            scanf("%f", &finals);
+
+
+            finalGrade = (prelim * 0.25) + (midterm * 0.25) + (semifinals * 0.25) + (finals * 0.25);
+
+           
+        
+               
+            printf("Prelim: %.2f\n", prelim);
+            printf("Midterm: %.2f\n", midterm);
+            printf("Semi-finals: %.2f\n", semifinals);
+            printf("Finals: %.2f\n", finals);
+
+            printf("\nFinal Grade: %.2f", finalGrade);
+
+
+            if (finalGrade <= 1.00) {
+
+                printf("\nRemarks: Excellent!\n");
+        
+            } else if (finalGrade <= 1.25) {
+
+                printf("\nRemarks: Outstanding!\n");
             
-            } else if (grade == 1.00) {
-
-                printf("You're Definitely Going to Make it Far!\n");
-
-            } else if (grade <= 1.01) {
-
-                printf("Well Done!\n");
-
-            } else if (grade <= 1.99) {  
-
-                printf("Still Uno! Good Job!\n");
-
-            } else if (grade <= 2.00) {
-
-                printf("Not bad!\n");
+            } else if (finalGrade <= 1.75) {
             
-            }else if (grade <= 2.99) {
+                printf("\nRemarks: Very Good!\n");
 
-                printf("Still Passed!\n");
+            } else if (finalGrade <= 2.50) {
 
-            } else if (grade <= 3.00) {
+                printf("\nRemarks: Good!\n");
 
-                printf("You just made the cut!\n");
+            } else if (finalGrade <= 3.00) {
 
-            } else if (grade <= 3.01) {
-
-                printf("You've failed.\n");
+                printf("\nRemarks: Passed!\n");
 
             } else {
 
-                printf("You've failed.\n");
-
+                printf("\nRemarks: Failed!\n");
             }
+
+
         } else if (confirm == '0') {
 
             printf("Re-run code.\n");
+
         } else {
 
             printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
