@@ -3,6 +3,7 @@ int main() {
 
     int operation;
     char confirm;
+    char tryAgain[5];
     int rows, i, j;
     float prelim, midterm, semifinals, finals;
     float finalGrade;
@@ -101,9 +102,11 @@ int main() {
         printf("Re-run code.\n");
         
         } else {
-        printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
-        }
+            printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
+        
 
+            while (getchar() != '\n');
+        }
 
 
 
@@ -131,9 +134,14 @@ int main() {
              printf("\n");
             }
         } else if (confirm == '0') {
+
             printf("Re-run code.\n");
+
         } else {
+
             printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
+
+            while (getchar() != '\n');
         }
         
 
@@ -207,8 +215,9 @@ int main() {
             printf("Re-run code.\n");
 
         } else {
-
             printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
+
+            while (getchar() != '\n');
         }
 
 
@@ -243,21 +252,34 @@ int main() {
 
         } else if (confirm == '0') {
 
-                 printf("Re-run code.\n");
+                printf("Re-run code.\n");
 
         } else {
+            printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
 
-                printf("Invalid input. Please enter '1' for Yes or '0' for No.\n");
+            while (getchar() != '\n');
         }
 
         } else if (operation == 10) {
 
-        printf("Ended session. Hope to see you again!\n");
-         
+            printf("Ended session. Hope to see you again!\n");
+
         } else {
-        printf("Invalid operation selected.\n");
+            
+            printf("Invalid operation selected.\n");
         }
-     } while (operation != 10   );
+
+        if (operation != 10) {
+
+            printf("\nDo you want to try another operation? (YES OR NO?): ");
+            scanf(" %4s", tryAgain);
+        }
+    } while (operation != 10 &&
+
+        ((tryAgain[0] == 'Y' || tryAgain[0] == 'y') &&
+        (tryAgain[1] == 'E' || tryAgain[1] == 'e') &&
+        (tryAgain[2] == 'S' || tryAgain[2] == 's') &&
+        tryAgain[3] == '\0'));
 
     return 0;
 }
